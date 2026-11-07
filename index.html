@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#210b17">
+  <meta name="description" content="Create and share personalized Laxmi Pujan greetings with Webinor.">
+  <title>Shubh Laxmi Pujan | Webinor</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="ambient"></div>
+  <canvas id="particles"></canvas>
+
+  <nav class="navbar">
+    <a href="#" class="brand">
+      <img src="logo.png" alt="Webinor Logo">
+    </a>
+    <span class="nav-label">DIWALI SPECIAL 2026</span>
+  </nav>
+
+  <main>
+    <section class="hero">
+
+      <div class="top-label" id="topLabel">
+        <span></span> THE FESTIVAL OF PROSPERITY <span></span>
+      </div>
+
+      <div class="lotus">
+        <div class="lotus-ring"></div>
+        <div class="lotus-symbol">❀</div>
+      </div>
+
+      <div class="diya-stage">
+        <div class="flame"></div>
+        <div class="flame-glow"></div>
+        <div class="wick"></div>
+        <div class="diya">
+          <div class="diya-top"></div>
+          <div class="diya-body"></div>
+        </div>
+      </div>
+
+      <p class="sanskrit">॥ शुभं करोति कल्याणम् ॥</p>
+
+      <h1>
+        Shubh
+        <span>Laxmi Pujan</span>
+      </h1>
+
+      <div class="gold-line"></div>
+
+      <p class="intro" id="intro">
+        May the divine blessings of Maa Lakshmi
+        illuminate your home with happiness,
+        peace, wealth and prosperity.
+      </p>
+
+      <h2 class="hindi">शुभ लक्ष्मी पूजन</h2>
+
+      <!-- Greeting generator -->
+      <div class="generator">
+
+        <div class="generator-heading">
+          <span>✦</span>
+          <h2 id="generatorTitle">Create Your Personal Greeting</h2>
+          <span>✦</span>
+        </div>
+
+        <div class="form-group">
+          <label for="language" id="languageLabel">
+            SELECT LANGUAGE
+          </label>
+
+          <select id="language">
+            <option value="en">English</option>
+            <option value="hi">हिंदी</option>
+            <option value="mr">मराठी</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="toName" id="toLabel">
+            TO – RECEIVER'S NAME
+          </label>
+
+          <input
+            type="text"
+            id="toName"
+            maxlength="35"
+            placeholder="Enter receiver's name"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="fromName" id="fromLabel">
+            FROM – YOUR NAME
+          </label>
+
+          <input
+            type="text"
+            id="fromName"
+            maxlength="35"
+            placeholder="Enter your name"
+          >
+        </div>
+
+        <button id="generateBtn" class="gold-button">
+          ✨ Generate My Greeting
+        </button>
+
+      </div>
+
+      <!-- Greeting preview -->
+      <div class="wish-card" id="wishCard">
+
+        <p class="small-heading" id="previewLabel">
+          YOUR PERSONALIZED GREETING
+        </p>
+
+        <p class="receiver" id="receiver">
+          Dear Family & Friends
+        </p>
+
+        <div class="preview-diya">🪔</div>
+
+        <h2 id="greetingTitle">शुभ लक्ष्मी पूजन!</h2>
+
+        <p id="personalWish">
+          May Maa Lakshmi bless your home with happiness,
+          good health, peace and endless prosperity.
+        </p>
+
+        <p class="sender" id="sender">
+          With love, Webinor
+        </p>
+
+      </div>
+
+      
+<div class="share-actions">
+  <button id="shareBtn" class="share-button">
+    ↗ Share on WhatsApp
+  </button>
+
+  <button id="copyBtn" class="copy-button">
+    Copy Greeting
+  </button>
+
+  <button id="downloadBtn" class="download-button">
+    ↓ Download Greeting Card
+  </button>
+</div>
+
+      <div class="blessing">
+        ✦ LIGHT • LOVE • PROSPERITY ✦
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <img src="logo.png" alt="Webinor" class="footer-logo">
+    <p>Crafted with creativity & love</p>
+    <a href="https://webinor.tech" target="_blank">
+      WEBINOR.TECH
+    </a>
+    <p class="footer-year">© 2026 Webinor</p>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
