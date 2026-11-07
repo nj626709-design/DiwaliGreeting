@@ -311,6 +311,226 @@ async function createGreetingCard() {
     ctx.lineWidth = 1;
     ctx.strokeRect(52, 52, 976, 1246);
 
+    
+// ==================================
+// DIWALI FESTIVE DECORATIONS
+// ==================================
+
+// 1. Golden string lights
+function drawStringLights() {
+  ctx.beginPath();
+  ctx.moveTo(100, 110);
+  ctx.quadraticCurveTo(540, 190, 980, 110);
+  ctx.strokeStyle = "#d9a64c";
+  ctx.lineWidth = 3;
+  ctx.stroke();
+
+  for (let i = 0; i <= 12; i++) {
+    const x = 120 + i * 70;
+    const y = 110 + Math.sin(i / 12 * Math.PI) * 35;
+
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x, y + 22);
+    ctx.strokeStyle = "#d9a64c";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    const colors = [
+      "#ffcc62", "#ff7777", "#64e6d2",
+      "#f6a5e5", "#ffe49a"
+    ];
+
+    ctx.beginPath();
+    ctx.arc(x, y + 29, 9, 0, Math.PI * 2);
+    ctx.fillStyle = colors[i % colors.length];
+    ctx.shadowColor = colors[i % colors.length];
+    ctx.shadowBlur = 17;
+    ctx.fill();
+    ctx.shadowBlur = 0;
+  }
+}
+
+// 2. Traditional hanging kandil
+function drawKandil(x, y, scale = 1) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(scale, scale);
+
+  // Hanging thread
+  ctx.strokeStyle = "#e9bd69";
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(0, -110);
+  ctx.lineTo(0, -45);
+  ctx.stroke();
+
+  // Top decoration
+  ctx.fillStyle = "#ffcf70";
+  ctx.beginPath();
+  ctx.moveTo(0, -55);
+  ctx.lineTo(25, -25);
+  ctx.lineTo(-25, -25);
+  ctx.closePath();
+  ctx.fill();
+
+  // Lantern body
+  const lantern = ctx.createLinearGradient(-35, 0, 35, 0);
+  lantern.addColorStop(0, "#c27a29");
+  lantern.addColorStop(0.5, "#ffe18c");
+  lantern.addColorStop(1, "#a74730");
+
+  ctx.fillStyle = lantern;
+  ctx.strokeStyle = "#ffdc88";
+  ctx.lineWidth = 3;
+
+  ctx.beginPath();
+  ctx.moveTo(-35, -25);
+  ctx.lineTo(35, -25);
+  ctx.lineTo(25, 45);
+  ctx.lineTo(0, 65);
+  ctx.lineTo(-25, 45);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+
+  // Lantern inner glow
+  ctx.fillStyle = "#fff0a8";
+  ctx.shadowColor = "#ffbd4a";
+  ctx.shadowBlur = 25;
+  ctx.beginPath();
+  ctx.ellipse(0, 15, 12, 28, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.shadowBlur = 0;
+
+  // Decorative bottom tassels
+  ctx.strokeStyle = "#ffce70";
+  ctx.lineWidth = 3;
+
+  for (let i = -2; i <= 2; i++) {
+    ctx.beginPath();
+    ctx.moveTo(i * 10, 55);
+    ctx.lineTo(i * 13, 85);
+    ctx.stroke();
+  }
+
+  ctx.restore();
+}
+
+// 3. Colorful fireworks
+function drawFirework(x, y, radius, color) {
+  ctx.save();
+  ctx.translate(x, y);
+
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 3;
+  ctx.shadowColor = color;
+  ctx.shadowBlur = 12;
+
+  for (let i = 0; i < 12; i++) {
+    const angle = (Math.PI * 2 * i) / 12;
+
+    const inner = radius * 0.35;
+    const outer = radius * (i % 2 === 0 ? 1 : 0.75);
+
+    ctx.beginPath();
+    ctx.moveTo(
+      Math.cos(angle) * inner,
+      Math.sin(angle) * inner
+    );
+
+    ctx.lineTo(
+      Math.cos(angle) * outer,
+      Math.sin(angle) * outer
+    );
+
+    ctx.stroke();
+  }
+
+  ctx.beginPath();
+  ctx.arc(0, 0, 5, 0, Math.PI * 2);
+  ctx.fillStyle = "#fff2b5";
+  ctx.fill();
+
+  ctx.restore();
+}
+
+// 4. Traditional panti / diya
+function drawPanti(x, y, scale = 1) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(scale, scale);
+
+  // Glow
+  const glow = ctx.createRadialGradient(0, -20, 3, 0, -20, 95);
+  glow.addColorStop(0, "rgba(255,190,75,0.35)");
+  glow.addColorStop(1, "rgba(255,190,75,0)");
+
+  ctx.fillStyle = glow;
+  ctx.fillRect(-100, -120, 200, 180);
+
+  // Flame
+  ctx.fillStyle = "#ff9d36";
+  ctx.shadowColor = "#ffad42";
+  ctx.shadowBlur = 25;
+
+  ctx.beginPath();
+  ctx.moveTo(0, -85);
+  ctx.bezierCurveTo(-38, -45, -22, -12, 0, -12);
+  ctx.bezierCurveTo(25, -18, 32, -53, 0, -85);
+  ctx.fill();
+
+  ctx.fillStyle = "#fff2ae";
+  ctx.beginPath();
+  ctx.ellipse(0, -35, 9, 23, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.shadowBlur = 0;
+
+  // Wick
+  ctx.strokeStyle = "#f4d69a";
+  ctx.lineWidth = 4;
+  ctx.beginPath();
+  ctx.moveTo(0, -10);
+  ctx.lineTo(0, 5);
+  ctx.stroke();
+
+  // Lamp bowl
+  const bowl = ctx.createLinearGradient(0, 0, 0, 45);
+  bowl.addColorStop(0, "#ffd77a");
+  bowl.addColorStop(1, "#a74727");
+
+  ctx.fillStyle = bowl;
+  ctx.beginPath();
+  ctx.moveTo(-48, 0);
+  ctx.quadraticCurveTo(0, 22, 48, 0);
+  ctx.quadraticCurveTo(35, 43, 0, 45);
+  ctx.quadraticCurveTo(-35, 43, -48, 0);
+  ctx.fill();
+
+  ctx.strokeStyle = "#ffe2a0";
+  ctx.lineWidth = 3;
+  ctx.stroke();
+
+  ctx.restore();
+}
+
+// Draw all decorations
+drawStringLights();
+
+drawKandil(145, 310, 0.85);
+drawKandil(935, 310, 0.85);
+
+drawFirework(135, 690, 38, "#ffbd66");
+drawFirework(945, 690, 38, "#ff83a5");
+
+drawFirework(210, 930, 22, "#7de5d3");
+drawFirework(870, 930, 22, "#f9d77c");
+
+drawPanti(180, 1190, 0.8);
+drawPanti(900, 1190, 0.8);
+
+
     // Golden particles
     for (let i = 0; i < 100; i++) {
       ctx.beginPath();
@@ -392,6 +612,16 @@ async function createGreetingCard() {
     ctx.fillStyle = "#ffe5a6";
     ctx.font = "38px Cinzel";
     ctx.fillText(`${t.withLove} ${from}`, 540, 1080);
+
+    
+// Small, subtle website credit
+ctx.fillStyle = "#d5b77e";
+ctx.globalAlpha = 0.75;
+ctx.font = "20px 'DM Sans', sans-serif";
+ctx.textAlign = "center";
+ctx.fillText("webinor.tech", 540, 1280);
+ctx.globalAlpha = 1;
+
 
     // Elegant personal greeting card footer
 ctx.strokeStyle = "#e9bd6970";
